@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bienvenido</title>
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+  </head>
+  <body style="background-color: <%= locals.bgColor ? bgColor : null %>;" >
+
+    <% if(locals.name) {%>
+      <div>
+        <h2>Hola <%= name %> , elegiste el color: <%= color %> , tu email es:
+          <%= email  %>  y tu edad es: <%= edad  %> </h2>
+      </div>
+      <% } else{ %>
+
+    <h1>Bienvenido</h1>
+
+    <form action="/" method="post">
+      <label for="name">ingrese su nombre </label>
+      <input type="text" name="name" id="name"><br>
+      <small><%= locals.errors && errors.name ? errors.name.msg : null %> </small> <br>
+      <!-- ........................................................................................ -->
+      <select name="color" id="color">
+        <option hidden selected value="">Selecciona un color</option>
+        <option value="red">Rojo</option>
+        <option value="blue">Azul</option>
+        <option value="green">Verde</option>
+      </select>  <br>
+      <small><%= locals.errors && errors.color ? errors.color.msg : null %> </small> <br>
+      <!-- ........................................................................................ -->
+      <label for="email">ingrese su email </label>
+      <input type="text" name="email" id="email"><br>
+      <small><%= locals.errors && errors.email ? errors.email.msg : null %> </small> <br><br>
+
+      <!-- ........................................................................................ -->
+      <label for="edad">ingrese su edad</label>
+      <input type="text" name="edad" id="edad"><br>
+      <small><%= locals.errors && errors.edad ? errors.edad.msg : null %> </small> <br>
+      <!-- ........................................................................................ -->
+       <!-- ////opcion de recordarme////// -->
+       <label for="recordar">Recordar color </label>
+       <input type="checkbox" name="recordar" id="recordar"><br><br>
+      <!-- ........................................................................................ -->
+      <input type="submit" value="Enviar datos">
+      <a href="/destroy"> Olvidar color</a>
+    </form>
+    <% } %> 
+
+  </body>
+  </html>
+  
+  
